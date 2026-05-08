@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chasta Sound | Where Music Comes Alive</title>
+  <!-- Google Fonts + Tailwind CSS + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- custom configuration to avoid Tailwind overriding too much -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            'chasta-dark': '#0a0a0f',
+            'chasta-card': '#111116',
+            'chasta-border': '#22222a',
+            'chasta-gold': '#eab308',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* smooth scroll + subtle fade-in */
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #0a0a0f;
+    }
+    .service-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -12px rgba(0,0,0,0.5);
+    }
+    .nav-link {
+      transition: color 0.2s;
+    }
+    .active-nav {
+      color: #eab308;
+      border-bottom: 2px solid #eab308;
+    }
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.5s ease-out forwards;
+    }
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+    .hero-bg {
+      background: radial-gradient(circle at 20% 30%, rgba(234, 179, 8, 0.08), transparent 70%);
+    }
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111116;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #eab308;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-200 antialiased">
+
+  <!-- ================================
+       NAVIGATION (multi‑page feeling via anchor sections)
+       ================================= -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-chasta-dark/90 backdrop-blur-xl border-b border-chasta-border shadow-lg">
+    <div class="container mx-auto px-5 md:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+      <!-- Logo + brand -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-chasta-gold rounded-full flex items-center justify-center shadow-md">
+          <i class="fas fa-music text-black text-lg"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight"><span class="text-white">CHASTA</span> <span class="text-chasta-gold">SOUND</span></h1>
+          <p class="text-[11px] text-gray-400 -mt-0.5">Where Music Comes Alive</p>
+        </div>
+      </div>
+      
+      <!-- desktop navigation (links to sections) -->
+      <nav class="hidden md:flex gap-7 text-sm font-medium">
+        <a href="#home" class="nav-link text-gray-300 hover:text-chasta-gold transition" data-nav="home">Home</a>
+        <a href="#services" class="nav-link text-gray-300 hover:text-chasta-gold transition" data-nav="services">Services</a>
+        <a href="#hire" class="nav-link text-gray-300 hover:text-chasta-gold transition" data-nav="hire">Instrument Hire</a>
+        <a href="#repairs" class="nav-link text-gray-300 hover:text-chasta-gold transition" data-nav="repairs">Repairs & Sales</a>
+        <a href="#contact" class="nav-link text-gray-300 hover:text-chasta-gold transition" data-nav="contact">Contact</a>
+      </nav>
+      
+      <!-- mobile menu button + dropdown (simple) -->
+      <div class="md:hidden relative">
+        <button id="mobileMenuBtn" class="text-2xl text-white focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div id="mobileMenu" class="absolute right-0 top-12 w-56 bg-chasta-card border border-chasta-border rounded-xl shadow-2xl hidden flex-col p-3 gap-2 backdrop-blur-md z-50">
+          <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm hover:bg-white/5">🏠 Home</a>
+          <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm hover:bg-white/5">🎵 Services</a>
+          <a href="#hire" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm hover:bg-white/5">🎸 Instrument Hire</a>
+          <a href="#repairs" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm hover:bg-white/5">🔧 Repairs & Sales</a>
+          <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-sm hover:bg-white/5">📞 Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24">
+    <!-- ========== HOME / HERO SECTION ========== -->
+    <section id="home" class="hero-bg py-12 md:py-20 px-5">
+      <div class="container mx-auto max-w-6xl">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+          <div class="flex-1 text-center lg:text-left animate-fade-up">
+            <div class="inline-block px-4 py-1 rounded-full bg-chasta-gold/10 border border-chasta-gold/30 text-chasta-gold text-xs font-semibold mb-4">
+              <i class="fas fa-head-side-music mr-1"></i> Premium Sound Equipment
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+              <span class="text-white">CHASTA</span> <span class="text-chasta-gold">SOUND</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-300 mt-3 italic">Where Music Comes Alive</p>
+            <div class="h-1 w-20 bg-chasta-gold rounded-full mx-auto lg:mx-0 my-5"></div>
+            <p class="text-gray-400 max-w-lg mx-auto lg:mx-0 text-base md:text-lg">
+              Professional instrument hire, repairs, and sales. From speakers to keyboards — we fuel your sound.
+            </p>
+            <div class="flex flex-wrap gap-4 justify-center lg:justify-start mt-8">
+              <a href="#services" class="bg-chasta-gold hover:bg-amber-500 text-black font-semibold px-7 py-3 rounded-full transition shadow-lg flex items-center gap-2"><i class="fas fa-headphones"></i> Explore Services</a>
+              <a href="#contact" class="border border-chasta-border hover:border-chasta-gold/60 text-gray-200 hover:text-chasta-gold px-7 py-3 rounded-full transition flex items-center gap-2"><i class="fas fa-phone-alt"></i> Contact Us</a>
+            </div>
+          </div>
+          <div class="flex-1 flex justify-center animate-fade-up delay-100">
+            <div class="relative">
+              <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-tr from-chasta-gold/20 to-transparent blur-3xl absolute -z-10"></div>
+              <div class="bg-chasta-card/60 backdrop-blur-sm p-6 rounded-2xl border border-chasta-border shadow-2xl">
+                <i class="fas fa-drumstick-bite text-7xl text-chasta-gold mx-auto block text-center"></i>
+                <div class="grid grid-cols-2 gap-4 mt-6 text-center">
+                  <div><i class="fas fa-guitar text-chasta-gold text-2xl"></i><p class="text-xs mt-1">Guitar</p></div>
+                  <div><i class="fas fa-microphone-alt text-chasta-gold text-2xl"></i><p class="text-xs mt-1">Mics</p></div>
+                  <div><i class="fas fa-keyboard text-chasta-gold text-2xl"></i><p class="text-xs mt-1">Keyboards</p></div>
+                  <div><i class="fas fa-volume-up text-chasta-gold text-2xl"></i><p class="text-xs mt-1">Speakers</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== OUR SERVICES (overview) ========== -->
+    <section id="services" class="py-16 px-5 bg-chasta-dark/40 border-y border-chasta-border">
+      <div class="container mx-auto max-w-6xl">
+        <div class="text-center mb-12 animate-fade-up">
+          <span class="text-chasta-gold font-semibold tracking-wide"><i class="fas fa-cog mr-1"></i> premium solutions</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Our <span class="text-chasta-gold">Services</span></h2>
+          <div class="w-24 h-1 bg-chasta-gold mx-auto mt-4 rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-7">
+          <div class="service-card bg-chasta-card rounded-2xl p-6 border border-chasta-border text-center hover:border-chasta-gold/40 transition">
+            <div class="w-16 h-16 bg-chasta-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-boxes text-chasta-gold text-2xl"></i></div>
+            <h3 class="text-xl font-bold">Instrument / Sound Hire</h3>
+            <p class="text-gray-400 text-sm mt-2">Top-quality rental gear for events, studios, or practice. Flexible daily/weekly rates.</p>
+          </div>
+          <div class="service-card bg-chasta-card rounded-2xl p-6 border border-chasta-border text-center hover:border-chasta-gold/40 transition">
+            <div class="w-16 h-16 bg-chasta-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-tools text-chasta-gold text-2xl"></i></div>
+            <h3 class="text-xl font-bold">Instrument Repairs</h3>
+            <p class="text-gray-400 text-sm mt-2">Expert repair for guitars, keyboards, amps, mixers and all gear — fast turnaround.</p>
+          </div>
+          <div class="service-card bg-chasta-card rounded-2xl p-6 border border-chasta-border text-center hover:border-chasta-gold/40 transition">
+            <div class="w-16 h-16 bg-chasta-gold/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-shopping-cart text-chasta-gold text-2xl"></i></div>
+            <h3 class="text-xl font-bold">Sales of Appliances</h3>
+            <p class="text-gray-400 text-sm mt-2">New & used instruments, speaker cables, amplifiers, and music accessories.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INSTRUMENT HIRE (full list with icons) ========== -->
+    <section id="hire" class="py-16 px-5">
+      <div class="container mx-auto max-w-5xl">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10">
+          <div>
+            <span class="text-chasta-gold font-semibold"><i class="fas fa-calendar-alt mr-1"></i> Rent with ease</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-1">Equipment <span class="text-chasta-gold">Hire</span></h2>
+            <p class="text-gray-400 mt-2">Everything you need to bring the stage alive</p>
+          </div>
+          <a href="#contact" class="mt-4 md:mt-0 text-chasta-gold border border-chasta-gold/40 hover:bg-chasta-gold/10 px-5 py-2 rounded-full transition text-sm"><i class="fas fa-headset mr-1"></i> Request Quote</a>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <!-- items from the image: speakers, keyboard, generator, drum set, mixer, guitar, mics, amplifier, speaker cables, plus extra logical ones from the list -->
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-volume-up text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Speakers</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-keyboard text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Keyboard</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-bolt text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Generator</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-drum text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Drum Set</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-sliders-h text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Mixer</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-guitar text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Guitar</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-microphone text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Mics</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-amplifier text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Amplifier</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-plug text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Speaker Cables</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-exchange-alt text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">DI Boxes</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-headphones text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Studio Monitors</span></div>
+          <div class="bg-chasta-card/60 backdrop-blur-sm rounded-xl p-4 border border-chasta-border text-center hover:bg-chasta-card transition"><i class="fas fa-music text-chasta-gold text-2xl mb-2 block"></i><span class="font-medium">Stands & Accessories</span></div>
+        </div>
+        <div class="mt-8 p-4 bg-chasta-card/30 rounded-xl border border-chasta-border text-center text-sm text-gray-300">
+          <i class="fas fa-info-circle text-chasta-gold mr-1"></i> Full inventory: Also available • Bass guitar • Digital piano • Subwoofers • Stage lighting.
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== REPAIRS & SALES SECTION ========== -->
+    <section id="repairs" class="py-16 px-5 bg-gradient-to-b from-black/40 to-transparent">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+          <div class="order-2 md:order-1 bg-chasta-card rounded-2xl p-6 md:p-8 border border-chasta-border shadow-xl">
+            <i class="fas fa-screwdriver-wrench text-chasta-gold text-3xl mb-3"></i>
+            <h3 class="text-2xl font-bold">Professional Repairs & Restoration</h3>
+            <ul class="mt-4 space-y-2 text-gray-300">
+              <li><i class="fas fa-check-circle text-chasta-gold w-5 mr-2"></i> Guitar setups & fretwork</li>
+              <li><i class="fas fa-check-circle text-chasta-gold w-5 mr-2"></i> Keyboard / synthesizer repairs</li>
+              <li><i class="fas fa-check-circle text-chasta-gold w-5 mr-2"></i> Amp & mixer diagnostics</li>
+              <li><i class="fas fa-check-circle text-chasta-gold w-5 mr-2"></i> Drum hardware & pedal fix</li>
+              <li><i class="fas fa-check-circle text-chasta-gold w-5 mr-2"></i> Speaker reconing & cable soldering</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-chasta-border">
+              <p class="font-semibold"><i class="fas fa-store"></i> Sales of Instrument Appliances</p>
+              <p class="text-sm text-gray-400 mt-1">We stock quality guitars, amps, effect pedals, drumsticks, strings, and pro audio gear.</p>
+            </div>
+          </div>
+          <div class="order-1 md:order-2 text-center md:text-left space-y-4 animate-fade-up delay-100">
+            <div class="inline-block px-3 py-1 bg-chasta-gold/20 rounded-full text-chasta-gold text-sm"><i class="far fa-clock"></i> Fast service</div>
+            <h2 class="text-3xl font-bold"><span class="text-chasta-gold">Instrument Repairs</span> & Gear Sales</h2>
+            <p class="text-gray-400">From minor fixes to full overhauls — your gear is in expert hands. Plus explore our showroom for new & vintage instruments.</p>
+            <div class="flex gap-3 justify-center md:justify-start">
+              <span class="bg-chasta-card px-4 py-2 rounded-full text-sm border border-chasta-border"><i class="fas fa-guitar"></i> Warranty on repairs</span>
+              <span class="bg-chasta-card px-4 py-2 rounded-full text-sm border border-chasta-border"><i class="fas fa-tag"></i> Best prices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT + NUMBERS SECTION ========== -->
+    <section id="contact" class="py-16 px-5 border-t border-chasta-border">
+      <div class="container mx-auto max-w-5xl">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">Get in <span class="text-chasta-gold">Touch</span></h2>
+          <div class="w-20 h-1 bg-chasta-gold mx-auto mt-3 rounded-full"></div>
+          <p class="text-gray-400 mt-4">Call, WhatsApp, or visit us — we bring sound to life</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- contact cards numbers from image -->
+          <div class="bg-chasta-card rounded-2xl p-8 border border-chasta-border text-center hover:border-chasta-gold/40 transition group">
+            <i class="fas fa-phone-alt text-chasta-gold text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold">Call / WhatsApp</h3>
+            <p class="text-2xl md:text-3xl font-bold tracking-wide mt-2"><span class="text-chasta-gold">0714 673319</span></p>
+            <p class="text-2xl md:text-3xl font-bold tracking-wide"><span class="text-chasta-gold">0719 331193</span></p>
+            <div class="mt-5 flex justify-center gap-5">
+              <a href="tel:0714673319" class="bg-white/5 hover:bg-chasta-gold/20 px-5 py-2 rounded-full transition flex items-center gap-2"><i class="fas fa-phone"></i> Call Now</a>
+              <a href="https://wa.me/254714673319" target="_blank" class="bg-white/5 hover:bg-green-600/30 px-5 py-2 rounded-full transition"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+          </div>
+          <div class="bg-chasta-card rounded-2xl p-8 border border-chasta-border">
+            <i class="fas fa-envelope text-chasta-gold text-3xl mb-3"></i>
+            <h3 class="text-xl font-semibold">Quick inquiry</h3>
+            <form id="inquiryForm" class="mt-4 space-y-4" onsubmit="event.preventDefault(); alert('📩 Demo: Your message has been received! Chasta Sound will reply within 24h. (0714673319)'); this.reset();">
+              <input type="text" placeholder="Your name" class="w-full bg-black/40 border border-chasta-border rounded-lg px-4 py-2 text-white focus:outline-none focus:border-chasta-gold" required>
+              <input type="email" placeholder="Email address" class="w-full bg-black/40 border border-chasta-border rounded-lg px-4 py-2 text-white focus:outline-none focus:border-chasta-gold" required>
+              <textarea rows="3" placeholder="Which instrument / hire?" class="w-full bg-black/40 border border-chasta-border rounded-lg px-4 py-2 text-white focus:outline-none focus:border-chasta-gold"></textarea>
+              <button type="submit" class="bg-chasta-gold hover:bg-amber-500 text-black font-semibold px-6 py-2 rounded-lg transition w-full">Send Message <i class="fas fa-paper-plane ml-1"></i></button>
+            </form>
+            <p class="text-xs text-gray-500 mt-3 text-center"><i class="fas fa-lock"></i> We'll get back within hours</p>
+          </div>
+        </div>
+        <!-- additional location placeholder (optional) -->
+        <div class="mt-10 text-center text-gray-500 text-sm border-t border-chasta-border pt-8 flex flex-wrap justify-center gap-6">
+          <span><i class="fas fa-map-marker-alt text-chasta-gold mr-1"></i> Nairobi, Kenya (Showroom by appointment)</span>
+          <span><i class="far fa-clock"></i> Mon-Sat: 9AM – 6PM</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== footer ========== -->
+    <footer class="py-8 border-t border-chasta-border bg-chasta-dark/70 text-center text-gray-500 text-sm">
+      <div class="container mx-auto">
+        <div class="flex flex-wrap justify-center gap-6 mb-4">
+          <a href="#home" class="hover:text-chasta-gold transition">Home</a>
+          <a href="#services" class="hover:text-chasta-gold transition">Services</a>
+          <a href="#hire" class="hover:text-chasta-gold transition">Hire</a>
+          <a href="#repairs" class="hover:text-chasta-gold transition">Repairs</a>
+          <a href="#contact" class="hover:text-chasta-gold transition">Contact</a>
+        </div>
+        <p>© 2025 Chasta Sound — Where Music Comes Alive. All rights reserved.</p>
+        <p class="mt-1 text-[11px]"><i class="fas fa-headphones"></i> Premium instrument hire, repairs & sales | 📞 0714673319 / 0719331193</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- mobile menu toggle script -->
+  <script>
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      // close on link click
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+    // active nav highlight on scroll (simple)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    function updateActiveNav() {
+      let current = '';
+      const scrollPos = window.scrollY + 150;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active-nav', 'text-chasta-gold');
+        link.classList.add('text-gray-300');
+        if (link.getAttribute('data-nav') === current) {
+          link.classList.add('active-nav', 'text-chasta-gold');
+          link.classList.remove('text-gray-300');
+        }
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
+  </script>
+</body>
+</html>
